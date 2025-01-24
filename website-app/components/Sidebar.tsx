@@ -46,7 +46,7 @@ const Sidebar = () => {
     <div className="h-full min-h-screen w-64 border-r">
       <div className="space-y-4 py-4">
         <div className="px-4 py-2">
-          <h2 className="text-xl font-semibold tracking-tight">My App</h2>
+          <h2 className="text-xl font-semibold tracking-tight">My Playground</h2>
         </div>
         <ScrollArea className="h-[calc(100vh-8rem)]">
           <nav className="grid gap-1 px-2">
