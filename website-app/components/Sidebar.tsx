@@ -22,6 +22,16 @@ const Sidebar = () => {
       name: 'Github Issues',
       href: '/issues',
       icon: LogIn
+    },
+    {
+      name: 'Testing1',
+      href: '/testing1',
+      icon: LayoutDashboard
+    },
+    {
+      name: 'Testing2',
+      href: '/testing2',
+      icon: LogIn
     }
   ];
 
