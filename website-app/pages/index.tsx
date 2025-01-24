@@ -13,7 +13,7 @@ const Home = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-6 mb-16">
           <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 mb-4">
-            Welcome to TataKKKL's Playground
+            Welcome to TataKKKL&apos;s Playground
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             AI scientist and ML engineer exploring full-stack development
