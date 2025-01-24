@@ -1,5 +1,6 @@
 import Header from "./Header";
-import Footer from "./Footer";
+import Footer from "./Footer"; 
+import Sidebar from "./Sidebar";
 import Head from "next/head";
 
 interface LayoutProps {
@@ -14,9 +15,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <div className="flex flex-1">
+          <Sidebar />
+          <main className="flex-1 p-6">
+            {children}
+          </main>
+        </div>
+        <Footer />
+      </div>
     </>
   );
 };
