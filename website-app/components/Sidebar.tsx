@@ -32,6 +32,11 @@ const Sidebar = () => {
       name: 'Testing2',
       href: '/testing2',
       icon: LogIn
+    },
+    {
+      name: 'book db',
+      href: '/book',
+      icon: LogIn
     }
   ];
 
