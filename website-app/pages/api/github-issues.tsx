@@ -1,15 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { GitHubIssue } from '@/interfaces/githubIssueInterface'
 
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
 
+  const { repo } = req.query
+
+  if (!repo) {
+    return res.status(400).json({ message: 'Repository parameter is required' })
+  }
+
   try {
     const response = await fetch(
-      'https://api.github.com/repos/PathOnAI/LiteWebAgentTreeSearch/issues?state=all', 
+      `https://api.github.com/repos/${repo}/issues?state=all`,
       {
         headers: {
           Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,

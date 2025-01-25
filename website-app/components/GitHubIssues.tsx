@@ -1,11 +1,14 @@
-// components/GitHubIssues.tsx
 import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { RefreshCw } from 'lucide-react'
 import { GitHubIssue } from '@/interfaces/githubIssueInterface'
 
-export default function GitHubIssues() {
+interface GitHubIssuesProps {
+  selectedRepo: string
+}
+
+export default function GitHubIssues({ selectedRepo }: GitHubIssuesProps) {
   const [issues, setIssues] = useState<GitHubIssue[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -13,7 +16,7 @@ export default function GitHubIssues() {
   const fetchIssues = async () => {
     setLoading(true)
     try {
-      const response = await fetch('/api/github-issues')
+      const response = await fetch(`/api/github-issues?repo=${selectedRepo}`)
       if (!response.ok) throw new Error('Failed to fetch issues')
       const data = await response.json()
       setIssues(data)
@@ -27,7 +30,7 @@ export default function GitHubIssues() {
 
   useEffect(() => {
     fetchIssues()
-  }, [])
+  }, [selectedRepo])
 
   if (loading) {
     return (
