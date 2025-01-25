@@ -1,17 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { GitHubProject } from '@/interfaces/githubprojectInterface'
 
-interface GitHubRepo {
-  id: number
-  name: string
-  description: string | null
-  html_url: string
-  stargazers_count: number
-  language: string | null
-  fork: boolean
-  owner: {
-    login: string
-  }
-}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -30,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('GitHub API request failed')
     }
 
-    const data: GitHubRepo[] = await response.json()
+    const data: GitHubProject[] = await response.json()
 
     // Filter repositories by organization and exclude forks
     const projects = data

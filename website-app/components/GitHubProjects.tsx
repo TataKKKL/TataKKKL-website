@@ -1,11 +1,33 @@
-// components/GitHubProjects.tsx
-import { useGithubProjects } from '@/hooks/useGithubProjects'
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { RefreshCw } from 'lucide-react'
+import { GitHubProject } from '@/interfaces/githubprojectInterface'
+
 
 export default function GitHubProjects() {
-  const { projects, loading, error, refreshProjects } = useGithubProjects()
+  const [projects, setProjects] = useState<GitHubProject[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchProjects = async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const response = await fetch('/api/github-projects')
+      if (!response.ok) throw new Error('Failed to fetch projects')
+      const data = await response.json()
+      setProjects(data)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch projects')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchProjects()
+  }, [])
 
   if (loading) {
     return (
@@ -19,7 +41,7 @@ export default function GitHubProjects() {
     return (
       <div className="text-center p-4">
         <p className="text-red-500 mb-4">{error}</p>
-        <Button onClick={refreshProjects} variant="outline">
+        <Button onClick={fetchProjects} variant="outline">
           <RefreshCw className="mr-2 h-4 w-4" />
           Try Again
         </Button>
@@ -31,7 +53,7 @@ export default function GitHubProjects() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Open Source Projects</h2>
-        <Button onClick={refreshProjects} variant="outline" size="sm">
+        <Button onClick={fetchProjects} variant="outline" size="sm">
           <RefreshCw className="mr-2 h-4 w-4" />
           Refresh
         </Button>

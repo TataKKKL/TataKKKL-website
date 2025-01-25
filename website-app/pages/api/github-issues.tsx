@@ -1,24 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { GitHubIssue } from '@/interfaces/githubIssueInterface'
 
-interface GitHubIssue {
-  id: number
-  number: number
-  title: string
-  state: string
-  html_url: string
-  created_at: string
-  updated_at: string
-  body: string | null
-  user: {
-    login: string
-    avatar_url: string
-  }
-  labels: {
-    id: number
-    name: string
-    color: string
-  }[]
-}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {

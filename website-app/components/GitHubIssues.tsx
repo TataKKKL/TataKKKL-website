@@ -3,21 +3,7 @@ import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { RefreshCw } from 'lucide-react'
-
-interface GitHubIssue {
-  id: number
-  number: number
-  title: string
-  state: string
-  html_url: string
-  created_at: string
-  updated_at: string
-  user: {
-    login: string
-    avatar_url: string
-  }
-  labels: string[]
-}
+import { GitHubIssue } from '@/interfaces/githubIssueInterface'
 
 export default function GitHubIssues() {
   const [issues, setIssues] = useState<GitHubIssue[]>([])
