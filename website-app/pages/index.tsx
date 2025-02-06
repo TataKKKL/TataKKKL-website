@@ -17,7 +17,7 @@ const Home = () => {
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             AI scientist and ML engineer exploring full-stack development
-            (Jan 17 - Feb 2) to expand my technical capabilities.
+            (Jan 17 - March 2) to expand my technical capabilities.
             <a 
               href="https://danqingz.github.io/blog/2025/01/20/full-stack.html"
               target="_blank"
