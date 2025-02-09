@@ -1,17 +1,9 @@
-// api/index.ts
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
-
-interface Data {
-  name: string;
-}
+import routes from './routes';
 
 const app = express();
 app.use(cors());
-
-app.get('/api/hello', (req: Request, res: Response<Data>) => {
-  res.status(200).json({ name: 'John Doe' });
-});
-
+app.use('/api', routes);
 
 export default app;
