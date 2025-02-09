@@ -22,7 +22,14 @@ DATABASE_URL=
 # Direct connection to the database. Used for migrations.
 DIRECT_URL=
 ```
-
+for migration:
+```
+npx prisma migrate dev --name create_books_table
+```
+for seeding:
+```
+npx prisma db seed
+```
 ## 2. Frontend
 We use Next.js page router to build the frontend.
 https://github.com/TataKKKL/TataKKKL-website/tree/main/website-app/pages
