@@ -42,7 +42,7 @@ production backend url: https://tata-kkkl-website-d7nq.vercel.app
 
 check the hello endpoint:
 ```
-url -X GET https://tata-kkkl-website-d7nq.vercel.app/api/hello
+curl -X GET https://tata-kkkl-website-d7nq.vercel.app/api/hello
 {"name":"John Doe"}%
 ```
 
