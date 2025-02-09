@@ -35,12 +35,29 @@ We use Next.js page router to build the frontend.
 https://github.com/TataKKKL/TataKKKL-website/tree/main/website-app/pages
 
 ## 3. Backend
+### 3.0 nextjs api route
 Right now, the backend are in the same repo as the frontend, but in the future, they will be in different repos. Under the pages/api folder.
 https://github.com/TataKKKL/TataKKKL-website/tree/main/website-app/pages/api
 
+### 3.1 separate backend
+* local backend
+install dependencies:
+```
+npm install
+```
+Start the development server:
+```
+vercel dev
+```
+test the hello endpoint:
+```
+curl -X GET http://localhost:3000/api/hello
+{"name":"John Doe"}%
+```
+* production backend
 production backend url: https://tata-kkkl-website-d7nq.vercel.app
 
-check the hello endpoint:
+test the hello endpoint:
 ```
 curl -X GET https://tata-kkkl-website-d7nq.vercel.app/api/hello
 {"name":"John Doe"}%
