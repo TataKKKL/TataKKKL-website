@@ -38,6 +38,14 @@ https://github.com/TataKKKL/TataKKKL-website/tree/main/website-app/pages
 Right now, the backend are in the same repo as the frontend, but in the future, they will be in different repos. Under the pages/api folder.
 https://github.com/TataKKKL/TataKKKL-website/tree/main/website-app/pages/api
 
+production backend url: https://tata-kkkl-website-d7nq.vercel.app
+
+check the hello endpoint:
+```
+url -X GET https://tata-kkkl-website-d7nq.vercel.app/api/hello
+{"name":"John Doe"}%
+```
+
 ## 4. Webhook testing
 testing repo: https://github.com/TataKKKL/TataKKKL-website
 webhook testing: ngrok
