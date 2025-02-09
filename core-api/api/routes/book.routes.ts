@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { getBooksController } from '../controllers/books.controller';
+import { getBooksController, getBookByTitleController } from '../controllers/books.controller';
 
 const router = Router();
 
-// Define the route for getting books
+// Keep existing route and add new route
 router.get('/', getBooksController);
+router.get('/:title', getBookByTitleController);
 
 export default router;
