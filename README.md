@@ -47,11 +47,11 @@ npm install
 ```
 Start the development server:
 ```
-vercel dev
+vercel dev --listen 3001
 ```
 test the hello endpoint:
 ```
-curl -X GET http://localhost:3000/api/hello
+curl -X GET http://localhost:3001/api/hello
 {"name":"John Doe"}%
 ```
 * production backend
