@@ -7,19 +7,3 @@ datasource db {
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
-
-model Book {
-  id             Int      @id @default(autoincrement())
-  title          String
-  author         String
-  genre          String?
-  overview       String?  @db.Text
-  rating         Float?
-  publicationDate Int?    @map("publication_date")
-  places         String?
-  imgUrl         String?  @map("img_url")
-  sourceUrl      String?  @map("source_url")
-  createdAt      DateTime @default(now()) @map("created_at")
-
-  @@map("books")
-}
