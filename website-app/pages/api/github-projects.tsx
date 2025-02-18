@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Filter repositories by organization and exclude forks
     const projects = data
       .filter((repo) => !repo.fork && 
-        (repo.owner?.login === 'TataKKKL' || repo.owner?.login === 'PathOnAI-org'))
+        (repo.owner?.login === 'TataKKKL' || repo.owner?.login === 'PathOnAI'))
       .map((repo) => ({
         id: repo.id,
         name: repo.name,
