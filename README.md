@@ -64,6 +64,16 @@ curl -X GET https://tata-kkkl-website-d7nq.vercel.app/api/hello
 ```
 
 ### 3.2 deploy backend on fargate
+#### (1) build docker image
+```
+docker build -t express-app . 
+docker run -p 3000:3000 express-app
+``` 
+test the hello endpoint:
+```
+curl -X GET http://localhost:3000/api/hello
+{"name":"John Doe"}%
+``` 
 
 ## 4. Webhook testing
 testing repo: https://github.com/TataKKKL/TataKKKL-website
