@@ -63,6 +63,8 @@ curl -X GET https://tata-kkkl-website-d7nq.vercel.app/api/hello
 {"name":"John Doe"}%
 ```
 
+### 3.2 deploy backend on fargate
+
 ## 4. Webhook testing
 testing repo: https://github.com/TataKKKL/TataKKKL-website
 webhook testing: ngrok
