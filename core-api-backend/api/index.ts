@@ -3,7 +3,19 @@ import cors from 'cors';
 import routes from './routes';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*',
+  // Important for SSE
+  credentials: true
+}));
+
+// Disable response buffering for SSE
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('X-Accel-Buffering', 'no');
+  next();
+});
+
 app.use('/api', routes);
 
 // Add this section to make the app listen on a port when run directly

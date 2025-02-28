@@ -1,8 +1,52 @@
 # Log
 
 ## 2025-02-28, Friday
-* webhook + sse
-* webhook + websocket
+### 1. Enable autoscaling again
+
+
+### 2. backend code for sse
+SSE implementation allows clients to:
+* Establish a persistent connection with a single HTTP request
+* Receive a stream of events from the server in real-time
+* Get automatic reconnection (handled by the EventSource API in browsers)
+
+```
+curl -N http://localhost:3000/api/sse/events
+data: {"type":"connection","message":"Connected to SSE"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:45.225Z"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:46.226Z"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:47.227Z"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:48.229Z"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:49.231Z"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:50.231Z"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:51.233Z"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:52.233Z"}
+
+data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:53.234Z"}
+```
+
+* resource management with SSE connection
+optimizes resource usage by only running the ping interval when clients are connected
+
+### 2. backend code for webhook + sse
+build locally with docker
+```
+npm install
+npm run build
+npm start
+```
+
+
+### 3. backend code for webhook + websocket
+
 
 ## 2025-02-27, Thursday
 * finish github issues pulse website, move backend to fargate
