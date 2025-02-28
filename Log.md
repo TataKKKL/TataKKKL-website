@@ -230,3 +230,19 @@ nslookup github-issue-pulse-api.pathon.ai
 curl -X GET http://github-issue-pulse-api.pathon.ai/api/hello
 ```
 
+### Health check
+```
+1️⃣ Open AWS EC2 Console
+Go to EC2 Dashboard → Target Groups.
+Find ecs-fargat-github-issue-pulse-se (your ECS target group).
+2️⃣ Update the Health Check Path
+Click on Health Checks.
+Change Health Check Path from / → /api/hello.
+Click Save Changes.
+
+aws elbv2 describe-target-health \
+  --target-group-arn arn:aws:elasticloadbalancing:us-east-1:010526261030:targetgroup/ecs-fargat-github-issue-pulse-se/09a2c50ea833a017
+
+```
+
+
