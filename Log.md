@@ -225,12 +225,27 @@ danqingzhang@Danqings-MBP core-api-backend % aws cloudwatch get-metric-statistic
 }
 
 ### step 5: change dns
-nslookup github-issue-pulse-api.pathon.ai
+```
+danqingzhang@Danqings-MBP GitIssuePulse % nslookup github-issue-pulse-api.pathon.ai
+Server:         192.168.50.1
+Address:        192.168.50.1#53
 
-curl -X GET http://github-issue-pulse-api.pathon.ai/api/hello
+Non-authoritative answer:
+github-issue-pulse-api.pathon.ai        canonical name = github-issue-pulse-alb-1297267319.us-east-1.elb.amazonaws.com.
+Name:   github-issue-pulse-alb-1297267319.us-east-1.elb.amazonaws.com
+Address: 3.220.248.124
+Name:   github-issue-pulse-alb-1297267319.us-east-1.elb.amazonaws.com
+Address: 44.209.225.212
+Name:   github-issue-pulse-alb-1297267319.us-east-1.elb.amazonaws.com
+Address: 18.213.222.74
+Name:   github-issue-pulse-alb-1297267319.us-east-1.elb.amazonaws.com
+Address: 18.215.190.191
+
+danqingzhang@Danqings-MBP GitIssuePulse % curl -X GET http://github-issue-pulse-api.pathon.ai/api/hello
+{"name":"John Doe"}% 
 ```
 
-### Health check
+### Health checkn
 ```
 1️⃣ Open AWS EC2 Console
 Go to EC2 Dashboard → Target Groups.
