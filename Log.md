@@ -1,5 +1,9 @@
 # Log
 
+## 2025-02-28, Friday
+* webhook + sse
+* webhook + websocket
+
 ## 2025-02-27, Thursday
 * finish github issues pulse website, move backend to fargate
     * docker [done]
