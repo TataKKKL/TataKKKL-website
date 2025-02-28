@@ -66,8 +66,8 @@ curl -X GET https://tata-kkkl-website-d7nq.vercel.app/api/hello
 ### 3.2 deploy backend on fargate
 #### (1) build docker image
 ```
-docker build -t express-app . 
-docker run -p 3000:3000 express-app
+docker build -t github-issue-pulse-backend .
+docker run -p 3000:3000 github-issue-pulse-backend
 ``` 
 test the hello endpoint:
 ```
