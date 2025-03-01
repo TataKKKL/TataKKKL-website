@@ -36,7 +36,9 @@ data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:
 * resource management with SSE connection
 optimizes resource usage by only running the ping interval when clients are connected
 
-### 2. backend code for webhook + sse
+### 3. backend code for websocket
+
+### 4. backend code for webhook + sse
 build locally with docker
 ```
 npm install
@@ -45,7 +47,7 @@ npm start
 ```
 
 
-### 3. backend code for webhook + websocket
+### 5. backend code for webhook + websocket
 
 
 ## 2025-02-27, Thursday
