@@ -51,9 +51,22 @@ https://git-issue-pulse.vercel.app/testing2
 
 ### 4. python version of backend code
 ```
+## step 1: create virtual environment
 python3.11 -m venv venv
 . venv/bin/activate
 pip install -e .
+
+## step 2: run the server
+uvicorn app.main:app --reload
+
+uvicorn app.main:app --port 3000 --reload
+
+## step 3: build docker image
+# Build the Docker image
+docker build -t fastapi-backend .
+
+# Run the container
+docker run -p 3000:3000 --name fastapi-app fastapi-backend
 ```
 
 ### 5. backend code for websocket
