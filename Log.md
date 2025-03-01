@@ -5,6 +5,8 @@
 
 
 ### 2. backend code for sse
+https://git-issue-pulse.vercel.app/testing1
+
 SSE implementation allows clients to:
 * Establish a persistent connection with a single HTTP request
 * Receive a stream of events from the server in real-time
@@ -36,18 +38,46 @@ data: {"type":"ping","message":"Server heartbeat","timestamp":"2025-02-28T21:12:
 * resource management with SSE connection
 optimizes resource usage by only running the ping interval when clients are connected
 
-### 3. backend code for websocket
+### 3. simple backend code for websocket
+https://git-issue-pulse.vercel.app/testing2
 
-### 4. backend code for webhook + sse
+```
+## step 1: local testing
+
+## step 2: local testing
+
+## step 3: docker based testing
+```
+
+### 4. python version of backend code
+```
+python3.11 -m venv venv
+. venv/bin/activate
+pip install -e .
+```
+
+### 5. backend code for websocket
+* simple chat app: https://git-issue-pulse.vercel.app/chatbot
+    * supabase for authentication
+        * add login page, similar to e-lirary demo
+        * chat page is protected
+    * websocket for real-time communication
+        * openai api for chat: only send the current conversation context to OpenAI for generating responses.
+    * supabase for database
+    * aws ecs service instead of vercel backend
+    
+
+### 6. backend code for webhook + sse
 build locally with docker
 ```
 npm install
 npm run build
 npm start
 ```
+* simple dashboard: https://git-issue-pulse.vercel.app/github-issues-dashboard
+    * auth with github
 
 
-### 5. backend code for webhook + websocket
 
 
 ## 2025-02-27, Thursday
