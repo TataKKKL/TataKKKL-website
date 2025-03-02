@@ -2,12 +2,45 @@
 
 ## 2025-03-01, Saturday
 ### deploy backend as ECS service [todo]
-* ECR
-* ECS task definition
+```
+
+## 1. docker 
+
+
+docker build --platform linux/arm64 -t github-issue-pulse-fastapi-backend .
+docker run -p 3000:3000 --name github-issue-pulse-fastapi-backend github-issue-pulse-fastapi-backend
+
+## 2. ECR
+1. Create a New ECR Repository (if not created)
+aws ecr create-repository --repository-name github-issue-pulse-fastapi-backend --region us-east-1
+
+aws sts get-caller-identity --query Account --output text
+
+2. Authenticate Docker with ECR
+aws ecr get-login-password --region us-east-1 | \
+  docker login --username AWS --password-stdin 010526261030.dkr.ecr.us-east-1.amazonaws.com
+
+3. Build and Tag Your Docker Image
+docker tag github-issue-pulse-fastapi-backend:latest \
+  010526261030.dkr.ecr.us-east-1.amazonaws.com/github-issue-pulse-fastapi-backend:latest
+
+4. Push to ECR
+docker push 010526261030.dkr.ecr.us-east-1.amazonaws.com/github-issue-pulse-fastapi-backend:latest
+
+## 3. ECS task definition & ECS task
+check task -> networking -> security group -> inbound rule -> 3000
+
+
+curl -X GET http://52.91.190.248:3000/api/hello
+
+curl -X GET http://52.91.190.248:3000/api/sse/events
+
+## 4. ECS service
 * ECS service
-* autoscaling
 * DNS
 
+## 5. autoscaling
+```
 ### add pages on frontend to connect to backend [todo]
 
 ## 2025-02-28, Friday
