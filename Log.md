@@ -1,5 +1,15 @@
 # Log
 
+## 2025-03-01, Saturday
+### deploy backend as ECS service [todo]
+* ECR
+* ECS task definition
+* ECS service
+* autoscaling
+* DNS
+
+### add pages on frontend to connect to backend [todo]
+
 ## 2025-02-28, Friday
 ### 1. Enable autoscaling again
 
@@ -97,6 +107,7 @@ npm start
 
 
 ## 2025-02-27, Thursday
+https://github.com/TataKKKL/GitIssuePulse/tree/main/core-api-backend
 * finish github issues pulse website, move backend to fargate
     * docker [done]
     * ECR
