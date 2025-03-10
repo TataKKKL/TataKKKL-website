@@ -1,11 +1,11 @@
 # TataKKKL-website
 
-- **Frontend**
+- **Frontend**: folder `website-app`
   - NextJS 14
   - TailwindCSS
   - Shadcn UI Components
 
-- **Backend**
+- **Backend**: folder `core-api-backend-py`
   - Express.js
   - FastAPI
 

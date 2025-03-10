@@ -1,6 +1,9 @@
 # Log
 
 
+## 2025-03-11, Tuesday
+### 1. set up CI/CD github action
+
 ## 2025-03-10, Monday
 ### 3. frontend debug
 testing1:1 Mixed Content: The page at 'https://git-issue-pulse.vercel.app/testing1' was loaded over HTTPS, but requested an insecure EventSource endpoint 'http://3.231.212.90:3000/api/sse/events'. This request has been blocked; the content must be served over HTTPS.Understand this errorAI
