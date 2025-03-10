@@ -1,5 +1,26 @@
 # Log
 
+
+## 2025-03-10, Monday
+### 1. deploy backend as ECS service [todo]
+```
+danqingzhang@Danqings-MBP GitIssuePulse % curl -N http://3.231.212.90:3000/api/sse/events
+data: {"type": "connection", "message": "Connected to SSE"}
+
+data: {"type": "ping", "message": "Server heartbeat", "timestamp": "2025-03-10T07:12:31.026728"}
+
+data: {"type": "ping", "message": "Server heartbeat", "timestamp": "2025-03-10T07:12:32.027259"}
+
+data: {"type": "ping", "message": "Server heartbeat", "timestamp": "2025-03-10T07:12:33.028559"}
+
+data: {"type": "ping", "message": "Server heartbeat", "timestamp": "2025-03-10T07:12:34.029738"}
+
+data: {"type": "ping", "message": "Server heartbeat", "timestamp": "2025-03-10T07:12:35.031899"}
+```
+
+### 2. frontend
+
+
 ## 2025-03-01, Saturday
 ### deploy backend as ECS service [todo]
 ```
