@@ -2,6 +2,105 @@
 
 
 ## 2025-03-10, Monday
+### 3. frontend debug
+testing1:1 Mixed Content: The page at 'https://git-issue-pulse.vercel.app/testing1' was loaded over HTTPS, but requested an insecure EventSource endpoint 'http://3.231.212.90:3000/api/sse/events'. This request has been blocked; the content must be served over HTTPS.Understand this errorAI
+hook.js:608 SSE connection error: Event
+
+You're absolutely right! If you switch from using an ECS task directly to an ECS service with an Application Load Balancer (ALB), you won't need to modify your application code to handle HTTPS.
+Benefits of Using ECS Service with ALB
+1. SSL/TLS Termination: The ALB handles all HTTPS encryption/decryption, so your application only needs to handle HTTP traffic.
+
+Yes, that's correct! If you use Vercel instead, SSL/TLS termination is also automatically handled for you. Vercel provides built-in HTTPS support with zero configuration required on your part.
+With Vercel:
+
+
+when using vercel for the frontend, and aws for the backend
+
+All domains get automatic SSL certificates through Let's Encrypt
+HTTPS is enforced by default on all traffic
+Certificate renewal is handled automatically
+HTTP to HTTPS redirection is set up for you
+
+
+AWS Side (Backend):
+
+Complete the ACM certificate validation for *.pathon.ai
+Add an HTTPS (port 443) listener to your load balancer, Select your validated certificate in the listener configuration
+Create a DNS record (like github-issue-pulse-api.pathon.ai) pointing to your load balancer
+
+
+Vercel Side (Frontend):
+
+Go to your Vercel project settings → Domains
+Add your domain (like github-issue-pulse.pathon.ai)
+Vercel will provide DNS configuration instructions
+Create the required DNS records at GoDaddy
+Vercel automatically handles SSL/HTTPS certificates for you
+
+
+
+This gives you a professional setup where:
+
+github-issue-pulse.pathon.ai (and/or www.pathon.ai) → Your Vercel frontend
+github-issue-pulse-api.pathon.ai → Your AWS backend API
+
+
+You'll need to set up three DNS records in GoDaddy:
+* ACM Validation Record (temporary)
+* Backend API Record
+* Frontend Domain Record
+
+Your frontend can then make API calls to https://api.pathon.ai/ for a clean separation between services.
+```
+## 4. ECS service
+ALB Listener Port: 80 (Standard HTTP)
+Target Group Forwarding to ECS: 3000 (Matches container port)
+💡 This allows requests like:
+
+curl -X GET http://your-alb-dns/api/hello
+without needing :3000 in the URL.
+
+health check: curl -N http://localhost:3000/
+
+## ACM
+
+
+## create the CNAME records
+
+## update the CNAME records to use the ip address
+danqingzhang@Danqings-MBP website-app % curl -X GET http://github-issue-pulse-api.pathon.ai/api/hello
+{"name":"John Doe"}%    
+
+
+## DNS propagation checker
+danqingzhang@Danqings-MBP website-app % nslookup _cd7c53b584b51706fbb3f477a7f7f412.pathon.ai
+Server:         192.168.50.1
+Address:        192.168.50.1#53
+
+** server can't find _cd7c53b584b51706fbb3f477a7f7f412.pathon.ai: NXDOMAIN
+
+danqingzhang@Danqings-MBP website-app % nslookup github-issue-pulse.pathon.ai                         
+Server:         192.168.50.1
+Address:        192.168.50.1#53
+
+** server can't find github-issue-pulse.pathon.ai: NXDOMAIN
+
+danqingzhang@Danqings-MBP website-app % nslookup github-issue-pulse-api.pathon.ai                     
+Server:         192.168.50.1
+Address:        192.168.50.1#53
+
+Non-authoritative answer:
+github-issue-pulse-api.pathon.ai        canonical name = github-issue-fastapi-lb-729395614.us-east-1.elb.amazonaws.com.
+Name:   github-issue-fastapi-lb-729395614.us-east-1.elb.amazonaws.com
+Address: 54.84.170.167
+Name:   github-issue-fastapi-lb-729395614.us-east-1.elb.amazonaws.com
+Address: 52.1.52.112
+
+```
+
+### 2. frontend
+https://github.com/TataKKKL/GitIssuePulse/commit/1187c88c2d8e7b84d91a89fc7354445f16f96473
+
 ### 1. deploy backend as ECS service [todo]
 ```
 danqingzhang@Danqings-MBP GitIssuePulse % curl -N http://3.231.212.90:3000/api/sse/events
@@ -18,8 +117,7 @@ data: {"type": "ping", "message": "Server heartbeat", "timestamp": "2025-03-10T0
 data: {"type": "ping", "message": "Server heartbeat", "timestamp": "2025-03-10T07:12:35.031899"}
 ```
 
-### 2. frontend
-https://github.com/TataKKKL/GitIssuePulse/commit/1187c88c2d8e7b84d91a89fc7354445f16f96473
+
 
 ## 2025-03-01, Saturday
 ### deploy backend as ECS service [todo]
