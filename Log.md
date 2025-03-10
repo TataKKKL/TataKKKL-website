@@ -19,7 +19,7 @@ data: {"type": "ping", "message": "Server heartbeat", "timestamp": "2025-03-10T0
 ```
 
 ### 2. frontend
-
+https://github.com/TataKKKL/GitIssuePulse/commit/1187c88c2d8e7b84d91a89fc7354445f16f96473
 
 ## 2025-03-01, Saturday
 ### deploy backend as ECS service [todo]
