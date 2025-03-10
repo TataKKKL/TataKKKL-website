@@ -63,9 +63,8 @@ without needing :3000 in the URL.
 health check: curl -N http://localhost:3000/
 
 ## ACM
-
-
-## create the CNAME records
+create the CNAME records
+CNAME record name should not contain the domain name
 
 ## update the CNAME records to use the ip address
 danqingzhang@Danqings-MBP website-app % curl -X GET http://github-issue-pulse-api.pathon.ai/api/hello
@@ -77,7 +76,66 @@ danqingzhang@Danqings-MBP website-app % nslookup _cd7c53b584b51706fbb3f477a7f7f4
 Server:         192.168.50.1
 Address:        192.168.50.1#53
 
-** server can't find _cd7c53b584b51706fbb3f477a7f7f412.pathon.ai: NXDOMAIN
+Non-authoritative answer:
+_cd7c53b584b51706fbb3f477a7f7f412.pathon.ai     canonical name = _e9ed44143f08f1e0e4c3a2f8c136fe6d.xlfgrmvvlj.acm-validations.aws.
+
+danqingzhang@Danqings-MBP website-app % aws acm describe-certificate --certificate-arn arn:aws:acm:us-east-1:010526261030:certificate/ef17242d-67ab-4222-8db1-2c12b1c863ce
+{
+    "Certificate": {
+        "CertificateArn": "arn:aws:acm:us-east-1:010526261030:certificate/ef17242d-67ab-4222-8db1-2c12b1c863ce",
+        "DomainName": "*.pathon.ai",
+        "SubjectAlternativeNames": [
+            "*.pathon.ai"
+        ],
+        "DomainValidationOptions": [
+            {
+                "DomainName": "*.pathon.ai",
+                "ValidationDomain": "*.pathon.ai",
+                "ValidationStatus": "SUCCESS",
+                "ResourceRecord": {
+                    "Name": "_cd7c53b584b51706fbb3f477a7f7f412.pathon.ai.",
+                    "Type": "CNAME",
+                    "Value": "_e9ed44143f08f1e0e4c3a2f8c136fe6d.xlfgrmvvlj.acm-validations.aws."
+                },
+                "ValidationMethod": "DNS"
+            }
+        ],
+        "Serial": "0a:3c:11:43:4b:ba:3c:34:63:dd:77:ce:e7:e6:fc:66",
+        "Subject": "CN=*.pathon.ai",
+        "Issuer": "Amazon",
+        "CreatedAt": "2025-03-10T12:23:32.919000-07:00",
+        "IssuedAt": "2025-03-10T13:00:51.031000-07:00",
+        "Status": "ISSUED",
+        "NotBefore": "2025-03-09T17:00:00-07:00",
+        "NotAfter": "2026-04-08T16:59:59-07:00",
+        "KeyAlgorithm": "RSA-2048",
+        "SignatureAlgorithm": "SHA256WITHRSA",
+        "InUseBy": [],
+        "Type": "AMAZON_ISSUED",
+        "KeyUsages": [
+            {
+                "Name": "DIGITAL_SIGNATURE"
+            },
+            {
+                "Name": "KEY_ENCIPHERMENT"
+            }
+        ],
+        "ExtendedKeyUsages": [
+            {
+                "Name": "TLS_WEB_SERVER_AUTHENTICATION",
+                "OID": "1.3.6.1.5.5.7.3.1"
+            },
+            {
+                "Name": "TLS_WEB_CLIENT_AUTHENTICATION",
+                "OID": "1.3.6.1.5.5.7.3.2"
+            }
+        ],
+        "RenewalEligibility": "INELIGIBLE",
+        "Options": {
+            "CertificateTransparencyLoggingPreference": "ENABLED"
+        }
+    }
+}
 
 danqingzhang@Danqings-MBP website-app % nslookup github-issue-pulse.pathon.ai                         
 Server:         192.168.50.1
